@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script>
+       
+       function TodoList(){
+            var element = document.getElementById("mytodo");
+            
+            var newTodo = document.getElementById("addInList").value;
+            var List = document.createElement("li");
+            var ListBtn = document.createElement("button");
+            ListBtn.innerHTML = "delete";
+            ListBtn.className = 'ml-2 btn btn-danger';
+            var node = document.createTextNode(newTodo);
+            List.appendChild(node);
+            List.appendChild(ListBtn)
+            List.className="myItem"
+            List.onclick = function () {
+                this.parentElement.removeChild(this);
+            };
+            
+            element.appendChild(List);
+            document.getElementById("Todo").innerHTML = newTodo;
+        }
+
+
+
+       function Refresh(){
+         TodoList();
+       }
+    </script>
+    <style>
+        .center {
+            margin: auto;
+            width: 30%;
+            border: 3px solid white;
+            padding: 10px;
+        }
+        .myItem {
+            padding: 10px;
+            margin: auto;
+            width: 50%;
+            color: blueviolet;
+        }
+    </style>
+    <title>Todo List</title>
+  </head>
+  <body>
+      <div style="height: 10rem"></div>
+      <div class="center">
+          <div class="card" style="width: 25rem;">
+              <div class="card-body">
+                  <h5 class="card-title">Todo List</h5>
+                <div>
+                    <table>
+                        <tr>
+                            <th><input type="text" placeholder="Todo Title" class="input-group" id="addInList" value=""></input></th>
+                            <th><button style="margin-left:10px;" type="button" class="btn btn-success" onclick="TodoList()">Add Todo</button></th>
+                        </tr>
+                    </table>
+                </div>
+                  <ol id="mytodo">
+                  </ol>
+                        
+                  <!-- <button type="button" class="btn btn-success">Add Todo</button> -->
+                  <!-- <button type="button" class="btn btn-danger" id="removeAll">Remove All Todo</button> -->
+              </div>
+          </div>
+      </div>
+  </body>
+</html>
